@@ -5,329 +5,85 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+<head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
 <style>
 body, html {height: 100%}
 body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
+.menu {display: none}
+.bgimg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("assets/owl.jpg");
+  min-height: 100%;
+}
 </style>
-<head>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</head>
-<body style="background-color:black;">
-	<!-- Navbar (sit on top) -->
+<body>
+
+<!-- Navbar (sit on top) -->
 <div class="w3-top w3-hide-small">
   <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
-    <a href="home.html" class="w3-bar-item w3-button">HOME</a>
+    <a href="#" class="w3-bar-item w3-button">HOME</a>
+    
+    <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
     
   </div>
 </div>
-	<div id='d1' style="position:absolute; top:0px; left:0px; z-index:1">  
-        <canvas id='game'>
-              Your browser does not support HTML5 Canvas.
-        </canvas>
-    </div>
-    <div class="w3-container w3-padding-64 w3-black w3-grayscale w3-xlarge w3-border-top " id="answer" style="position:absolute; top:600px; left:150px; z-index:1 " width=100%>
-  <div class="w3-content" style="background-image: url('assets/clues.png')">
-    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">Solution</h1>
-    <h3 class="w3-center w3-xxxlarge ">Marie Curie</h3>
-    <img src="assets/MC.jpg" class="w3-round" alt="Norway" style="float:left; padding: 16px;">
-    <p>Maria Skłodowska was born in Warsaw, in Congress Poland in the Russian Empire, on 7 November 1867. In late 1891, she left Poland for France, proceeding with her studies of physics, chemistry, and mathematics at the University of Paris.</br>
-    In 1894, Skłodowska had begun her scientific career in Paris with an investigation of the magnetic properties of various steels. That same year Pierre Curie entered her life; it was their mutual interest in natural sciences that drew them together. On 26 July 1895, they were married in Sceaux. </br>
-    In July 1898, Curie and her husband published a joint paper announcing the existence of an element they named "polonium".  </br>
-    By 1898 the Curies had obtained traces of radium, but appreciable quantities, uncontaminated with barium, were still beyond reach. The Curies undertook the arduous task of separating out radium salt by differential crystallization. From a tonne of pitchblende, one-tenth of a gram of radium chloride was separated in 1902. In 1910, she isolated pure radium metal. </br>
-    Between 1898 and 1902, the Curies published, jointly or separately, a total of 32 scientific papers, including one that announced that, when exposed to radium, diseased, tumour-forming cells were destroyed faster than healthy cells.</br>
-    In December 1903, the Royal Swedish Academy of Sciences awarded Pierre Curie, Marie Curie, and Henri Becquerel the Nobel Prize in Physics. She won the 911 Nobel Prize in Chemistry "in recognition of her services to the advancement of chemistry by the discovery of the elements radium and polonium, by the isolation of radium and the study of the nature and compounds of this remarkable element."
-</p>
-<button class="w3-button w3-purple" onclick="location.href='https://en.wikipedia.org/wiki/Marie_Curie'">Read More</button>
-<button class="w3-button w3-purple" onclick="location.href='list.html'">Try Another</button>
+  
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-padding">
+    <span class="w3-tag w3-xlarge">Learning, the right way</span>
+  </div>
+  <div class="w3-display-right w3-center">
+    <span class="w3-text-white w3-hide-small" style="font-size:100px; padding:30px;">Who's Clues</span>
+    <p><a href="list.html" class="w3-button w3-xxlarge w3-black">Play now</a></p>
+  </div>
+</header>
+
+<!-- About Container -->
+<div class="w3-container w3-padding-64 w3-purple w3-grayscale w3-xlarge" id="about"  style="background-image: url('assets/clues.png');">
+  <div class="w3-content">
+    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">About</h1>
+    <p>We know all work and no play is bad, but there is no reason to not try merging the two. Who's clues is a playable encyclopedia that allows users to play figures from history while learning about simultaneously learning about their contributions to the world as we know it.
+    </br>
+    In this day and age when online learning has had to quickly become the norm, students have been fraught with issues regarding motivation and concentration. Who's clues combines education with gaming, a blend the creators personally think is very important right now to help with focus while also easing the burden of rote learning.</br>
+    In the future, we hope to expand to add a large number of personalities into our database so it can also aid as a quick lookup. </p>
+    
     
   </div>
 </div>
 
-    <script>
-    var config = {
-    type: Phaser.AUTO,
-    width: document.body.clientWidth,
-    height: 500,
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 1000},
-            debug: false
-        }
-    },
-    scene: {
-        preload: preload,
-        create: create,
-        update: update
-    }
-};
 
-    var game = new Phaser.Game(config, 'game');
 
-	
-    function preload ()
-    {
-        
-    	this.load.image('ground', 'assets/ground.png');
-    	this.load.image('star', 'assets/star.png');
-    	this.load.image('bg1', 'assets/bg2 - Copy.jpg');
-    	
-    	this.load.image('stoneleft', 'assets/tile1.png');
-    	this.load.image('stonecenter', 'assets/tile2.png');
-    	this.load.image('stoneright', 'assets/tile3.png');
-    	this.load.image('stonebtleft', 'assets/tile9.png');
-    	this.load.image('stonebtright', 'assets/tile7.png');
-    	this.load.image('tip', 'assets/tile36.png');
-    	this.load.image('born', 'assets/born.png');
-    	this.load.image('paris', 'assets/Paris.png');
-    	this.load.image('married', 'assets/Married.png');
-    	this.load.image('nobel', 'assets/Nobel.png');
-    	this.load.image('radium', 'assets/Radium.png');
-    	this.load.image('promoted', 'assets/Promoted.png');
-    	this.load.image('nobel2', 'assets/Nobel2.png');
-    	this.load.image('widowed', 'assets/Widowed.png');
-    	this.load.image('xrays', 'assets/XRays.png');
-    	this.load.image('medicine', 'assets/Medicine.png');
-    	this.load.image('death', 'assets/Death.png');
-    	this.load.image('box', 'assets/box.png');
-    	this.load.image('startheader', 'assets/start.png');
-    	this.load.image('endheader', 'assets/Who-Am-I.png');
-    	this.load.spritesheet('crate', 'assets/tilesheet_snow.png',{ frameWidth: 16, frameHeight: 16 } );
-    	this.load.spritesheet('dude', 'assets/character.png',{ frameWidth: 32, frameHeight: 32 } );
-    	this.load.spritesheet('skills', 'assets/health.png',{ frameWidth: 32, frameHeight: 32 } );
-    }
-    function collectStar (player, star)
-	{
-		skillname = this.physics.add.sprite(star.x-15, star.y-10, star.name);
-		skillname.displayHeight=30; 
-    	skillname.scaleX=skillname.scaleY;
-		this.physics.add.collider(skillname, platforms);
-    	star.disableBody(true, true);
-	}
-	function createfloatingrock(startheight, loc, platforms, gameptr)
-	{
 
-		//platforms.create(startheight,loc, 'stoneleft');
-		//platforms.create(startheight+64,loc, 'stonecenter');
-		//platforms.create(startheight+64+64,loc, 'stoneright');
-		//platforms.create(startheight,loc+64, 'stonebtleft');
-		//platforms.create(startheight+64,loc+64, 'ground');
-		//platforms.create(startheight+64+64,loc+64, 'stonebtright');
-		//platforms.create(startheight+64,loc+64+64, 'tip');
-		var crater = platforms.create(startheight+64,loc+64, 'box');
-		crater.scaleX=2;
-		crater.scaleY=crater.scaleX;
-		crater.refreshBody();
-		
-		//platforms.create(startheight+64,loc+64, 'ground');
-		
-	    return platforms;
-	}
-    function create ()
-    {
-        
-    this.cameras.main.setBounds(0, 0, 5740, 500);
-    this.physics.world.setBounds(0, 0, 5740, 500);
 
-    //this.add.image(0, 0, 'sky').setOrigin(0);
-    this.add.image(0, 0, 'bg1').setOrigin(0);
-    this.add.image(1920, 0, 'bg1').setOrigin(0);
-    this.add.image(1920*2,0, 'bg1').setOrigin(0);
-    this.add.image(1920*3,0, 'bg1').setOrigin(0);
-    
-    
 
-    
-	
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
+  <p>Created for Who Done It Hacks 2020</a></p>
+</footer>
 
-	platforms = this.physics.add.staticGroup();
-	var skheader =  platforms.create(500, 400,'startheader');
-	skheader.scaleX=2;
-	skheader.scaleY=skheader.scaleX;
-	skheader.refreshBody();
-	var endheader =  platforms.create(4960, 400,'endheader');
-	endheader.scaleX=2;
-	endheader.scaleY=endheader.scaleX;
-	endheader.refreshBody();
-	platforms = createfloatingrock(1000, 350, platforms, this);
-	platforms = createfloatingrock(1300, 250, platforms, this);
-	platforms = createfloatingrock(1600, 300, platforms, this);
-	platforms = createfloatingrock(1800, 250, platforms, this);
-	platforms = createfloatingrock(2100, 150, platforms, this);
-	platforms = createfloatingrock(2400, 350, platforms, this);
-	platforms = createfloatingrock(2800, 450, platforms, this);
-	platforms = createfloatingrock(3000, 150, platforms, this);
-	platforms = createfloatingrock(3500, 200, platforms, this);
-	platforms = createfloatingrock(3800, 250, platforms, this);
-	platforms = createfloatingrock(4200, 450, platforms, this);
-	
-	skill1 = this.physics.add.sprite(1064, 300, 'skills');
-	skill1.name = "born";
-	skill1.displayWidth=game.config.width*.03; 
-    skill1.scaleY=skill1.scaleX;
-	skill2 = this.physics.add.sprite(1364, 200, 'skills');
-	skill2.displayWidth=game.config.width*.03; 
-	skill2.name = "paris";
-    skill2.scaleY=skill2.scaleX;
-	skill3 = this.physics.add.sprite(1664, 250, 'skills');
-	skill3.displayWidth=game.config.width*.03; 
-	skill3.name = "married";
-    skill3.scaleY=skill3.scaleX;
-    skill4 = this.physics.add.sprite(1864, 200, 'skills');
-	skill4.displayWidth=game.config.width*.03; 
-	skill4.name = "radium";
-    skill4.scaleY=skill4.scaleX;
-    skill5 = this.physics.add.sprite(2164, 100, 'skills');
-	skill5.displayWidth=game.config.width*.03; 
-	skill5.name = "nobel";
-    skill5.scaleY=skill5.scaleX;
-    skill6 = this.physics.add.sprite(2464, 300, 'skills');
-	skill6.displayWidth=game.config.width*.03; 
-	skill6.name = "promoted";
-    skill6.scaleY=skill6.scaleX;
-    skill7 = this.physics.add.sprite(3064, 100, 'skills');
-	skill7.displayWidth=game.config.width*.03; 
-	skill7.name = "nobel2";
-    skill7.scaleY=skill7.scaleX;
-    skill8 = this.physics.add.sprite(2864, 400, 'skills');
-	skill8.displayWidth=game.config.width*.03; 
-	skill8.name = "widowed";
-    skill8.scaleY=skill8.scaleX;
-    
-    skill9 = this.physics.add.sprite(3564, 150, 'skills');
-	skill9.displayWidth=game.config.width*.03; 
-	skill9.name = "xrays";
-    skill9.scaleY=skill9.scaleX;
-    skill10 = this.physics.add.sprite(3864, 200, 'skills');
-	skill10.displayWidth=game.config.width*.03; 
-	skill10.name = "medicine";
-    skill10.scaleY=skill10.scaleX;
-    skill11 = this.physics.add.sprite(4264, 400, 'skills');
-	skill11.displayWidth=game.config.width*.03; 
-	skill11.name = "death";
-    skill11.scaleY=skill11.scaleX;
-	skill1.setCollideWorldBounds(true);
-	skill2.setCollideWorldBounds(true);
-	skill3.setCollideWorldBounds(true);
-	skill4.setCollideWorldBounds(true);
-	skill5.setCollideWorldBounds(true);
-	skill6.setCollideWorldBounds(true);
-	skill7.setCollideWorldBounds(true);
-	skill8.setCollideWorldBounds(true);
-	skill9.setCollideWorldBounds(true);
-	skill10.setCollideWorldBounds(true);
-	skill11.setCollideWorldBounds(true);
-	var base = platforms.create(0, 490, 'ground');
-	base.scaleX=game.config.width;
-
-	base.refreshBody();
-	player = this.physics.add.sprite(200, 200, 'dude');
-	this.physics.add.overlap(player, skill1, collectStar, null, this);
-	this.physics.add.overlap(player, skill2, collectStar, null, this);
-	this.physics.add.overlap(player, skill3, collectStar, null, this);
-	this.physics.add.overlap(player, skill4, collectStar, null, this);
-	this.physics.add.overlap(player, skill5, collectStar, null, this);
-	this.physics.add.overlap(player, skill6, collectStar, null, this);
-	this.physics.add.overlap(player, skill8, collectStar, null, this);
-	this.physics.add.overlap(player, skill7, collectStar, null, this);
-	this.physics.add.overlap(player, skill9, collectStar, null, this);
-	this.physics.add.overlap(player, skill11, collectStar, null, this);
-	this.physics.add.overlap(player, skill10, collectStar, null, this);
-    player.displayWidth=game.config.width*.05; 
-    player.scaleY=player.scaleX;
-	player.setBounce(0.2);
-	player.setCollideWorldBounds(true);
-	this.anims.create({
-	    key: 'rotate',
-	    frames: this.anims.generateFrameNumbers('skills', { start: 0, end: 3 }),
-	    frameRate: 10,
-	    repeat: -1
-	});
-	this.physics.add.collider(player, platforms);
-	this.physics.add.collider(skill1, platforms);
-	this.physics.add.collider(skill2, platforms);
-	this.physics.add.collider(skill3, platforms);
-	this.physics.add.collider(skill4, platforms);
-	this.physics.add.collider(skill5, platforms);
-	this.physics.add.collider(skill6, platforms);
-	this.physics.add.collider(skill8, platforms);
-	this.physics.add.collider(skill7, platforms);
-	this.physics.add.collider(skill9, platforms);
-	this.physics.add.collider(skill10, platforms);
-	this.physics.add.collider(skill11, platforms);
-	this.anims.create({
-	    key: 'left',
-	    frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-	    frameRate: 10,
-	    repeat: -1
-	});
-
-	this.anims.create({
-	    key: 'turn',
-	    frames: [ { key: 'dude', frame: 4 } ],
-	    frameRate: 20
-	});
-
-	this.anims.create({
-	    key: 'right',
-	    frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-	    frameRate: 10,
-	    repeat: -1
-	});
-	this.cameras.main.startFollow(player);
-
-    this.cameras.main.followOffset.set(-300, 0);
-	
-    }
-    function update()
-    {
-    	player.setVelocity(0);
-    	
-    	cursors = this.input.keyboard.createCursorKeys();
-    	if (cursors.left.isDown)
-{
-    player.setVelocityX(-400);
-
-    player.anims.play('left', true);
-   this.cameras.main.followOffset.x = 300;
-}
-else if (cursors.right.isDown)
-{
-    player.setVelocityX(160);
-    skill1.anims.play('rotate',true);
-    skill2.anims.play('rotate',true);
-    skill3.anims.play('rotate',true);
-    skill4.anims.play('rotate',true);
-    skill5.anims.play('rotate',true);
-    skill6.anims.play('rotate',true);
-    player.anims.play('right', true);
-    //this.cameras.main.followOffset.x = -150;
-}
-else
-{
-    //player.setVelocityX(0);
-
-    player.anims.play('turn');
-}
-
-if (cursors.up.isDown)
-{
-    player.setVelocityY(-150);
-}
-if (cursors.up.isUp & !player.body.touching.down)
-{
-player.setVelocityY(100);
-    	
-    }
-    function render() {
-
-    this.debug.cameraInfo(this.cameras, 32, 32);
-}
-
-}
-    </script>
 
 
 </body>
+ <script>
+   $(document).ready(function() {
+      $("button").click(function(event){
+         var the_id = event.target.id;
+         $.ajax({
+            url: "/recieve_data",
+            type: "get",
+            data: {button_id: the_id},
+           success: function(response) {
+           $("#response").html(response);
+         },
+          error: function(xhr) {
+        //Do Something to handle error
+        }
+       });
+     });
+   });
+  </script>
 </html>
