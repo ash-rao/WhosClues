@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<title>Who's Clues</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+<head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+<style>
+body, html {height: 100%}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
+.menu {display: none}
+.bgimg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("assets/owl.jpg");
+  min-height: 100%;
+}
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top w3-hide-small">
+  <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
+    <a href="#" class="w3-bar-item w3-button">HOME</a>
+    
+    <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+    
+  </div>
+</div>
+  
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-padding">
+    <span class="w3-tag w3-xlarge">Learning, the right way</span>
+  </div>
+  <div class="w3-display-right w3-center">
+    <span class="w3-text-white w3-hide-small" style="font-size:100px; padding:30px;">Who's Clues</span>
+    <p><a href="list.html" class="w3-button w3-xxlarge w3-black">Play now</a></p>
+  </div>
+</header>
+
+<!-- About Container -->
+<div class="w3-container w3-padding-64 w3-red w3-grayscale w3-xlarge" id="about"  style="background-image: url('assets/clues.png')>
+  <div class="w3-content">
+    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">About</h1>
+    <p>We know all work and no play is bad, but there is no reason to not try merging the two. Who's clues is a playable encyclopedia that allows users to play figures from history while learning about simultaneously learning about their contributions to the world as we know it.
+    </br>
+    In this day and age when online learning has had to quickly become the norm, students have been fraught with issues regarding motivation and concentration. Who's clues combines education with gaming, a blend the creators personally think is very important right now to help with focus while also easing the burden of rote learning.</br>
+    In the future, we hope to expand to add a large number of personalities into our database so it can also aid as a quick lookup. </p>
+    
+    
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
+  <p>Created for Who Done It Hacks 2020</a></p>
+</footer>
+
+
+
+</body>
+ <script>
+   $(document).ready(function() {
+      $("button").click(function(event){
+         var the_id = event.target.id;
+         $.ajax({
+            url: "/recieve_data",
+            type: "get",
+            data: {button_id: the_id},
+           success: function(response) {
+           $("#response").html(response);
+         },
+          error: function(xhr) {
+        //Do Something to handle error
+        }
+       });
+     });
+   });
+  </script>
+</html>

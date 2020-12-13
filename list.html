@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<title>Who's Clues</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+<style>
+body, html {height: 100%}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
+</style>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body style="background-color:black;">
+  <!-- Navbar (sit on top) -->
+<div class="w3-top w3-hide-small">
+  <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
+    <a href="home.html" class="w3-bar-item w3-button">HOME</a>
+
+  </div>
+</div>
+<div class="w3-container w3-padding-64 w3-black w3-grayscale w3-xlarge " style="background-image: url('assets/clues.png')" width=100%>
+  <div class="w3-content ">
+    <h1 class="w3-center w3-jumbo  w3-border-bottom" style="margin-bottom:64px">Themes</h1>
+    <h3 class="w3-center w3-xlarge ">Pick from a wide range of themes to test yourself against. A figure is picked randomly from the theme you select to let you guess the name. If you have encountered the same figure before, return back and try again. </br> Good luck and happy playing! </h3>
+
+
+<button onclick="myFunction('Demo1')" class="w3-button w3-block w3-purple w3-left-align">Scientists</button>
+<div id="Demo1" class="w3-hide w3-container w3-padding-16 ">
+    <p>Learn about popular and not so popular scientists from across the world and their contributions to the world as we know it!</p>
+    <button class="w3-button w3-purple" onclick="location.href='index.html'">Try Now!</button>
+ 
+</div>
+
+<button onclick="myFunction('Demo2')" class="w3-button w3-block w3-purple w3-left-align">Artists</button>
+<div id="Demo2" class="w3-hide w3-container w3-padding-16 ">
+    <p>Learn about popular and not so popular artists from across the world and their contributions to the world as we know it!</p>
+    <button class="w3-button w3-purple" onclick="location.href='index.html'">Try Now!</button>
+    
+</div>
+<button onclick="myFunction('Demo3')" class="w3-button w3-block w3-purple w3-left-align">Leaders</button>
+<div id="Demo3" class="w3-hide w3-container w3-padding-16 ">
+   <p>Learn about popular and not so popular leaders from across the world and their contributions to the world as we know it!</p>
+    <button class="w3-button w3-purple" onclick="location.href='index.html'">Try Now!</button>
+   
+</div>
+<button onclick="myFunction('Demo3')" class="w3-button w3-block w3-purple w3-left-align">Musicians</button>
+<div id="Demo3" class="w3-hide w3-container w3-padding-16 ">
+    <p>Learn about popular and not so popular musicians from across the world and their contributions to the world as we know it!</p>
+    <button class="w3-button w3-purple" onclick="location.href='index.html'">Try Now!</button>
+    
+</div>
+
+</div>
+</div>
+
+<script>
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace("w3-black", "w3-red");
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace("w3-red", "w3-black");
+  }
+}
+</script>
+
+</body>
+</html>
